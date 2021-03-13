@@ -30,17 +30,6 @@ public class Cell : MonoBehaviour
     public bool EnemySpawned { get; private set; } = false;
     public bool ChestSpawned { get; private set; } = false;
 
-    public event UnityAction CellVisited;
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Player>())
-        {
-            CellVisited?.Invoke();
-        }
-    } 
-
     private void SetActiveTorch(bool wallActive, GameObject[] torchs)
     {
         if (wallActive)
@@ -140,8 +129,7 @@ public class Cell : MonoBehaviour
 
         enemy.transform.eulerAngles = GetTurnEnemy();
 
-        enemy.SetParent(this);
-        enemy.SetTarget(player);
+        enemy.Init(player);
     }
 
     public bool TrySpawnChest(Chest chestPrefab,out Chest chest)

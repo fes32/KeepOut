@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingTable : DropItem
+public class Sleep : State
 {
-    public void Destroy()
+    private void Update()
     {
-        Destroy(this.gameObject);
+        
     }
 }

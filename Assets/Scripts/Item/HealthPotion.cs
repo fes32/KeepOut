@@ -6,6 +6,6 @@ public class HealthPotion : DropItem
 {
     public void Taked()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

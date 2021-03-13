@@ -539,7 +539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &98369211
 Transform:
   m_ObjectHideFlags: 0
@@ -836,6 +836,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelGenerator: {fileID: 2040649297}
   _gameEndingPanel: {fileID: 1827923609}
+  _player: {fileID: 1304457976}
+  _playerSpawnPoint: {fileID: 547295329}
 --- !u!4 &139397228
 Transform:
   m_ObjectHideFlags: 0
@@ -4375,8 +4377,6 @@ MonoBehaviour:
   _audioSource: {fileID: 1199805084}
   _animator: {fileID: 1199805082}
   _attack: {fileID: 8300000, guid: 303d44c8d6ec943a38df8ec10b19d9c7, type: 3}
-  _move: {fileID: 8300000, guid: 2a8ad93a09533fc48bbbf4defa479391, type: 3}
-  _miss: {fileID: 8300000, guid: 303d44c8d6ec943a38df8ec10b19d9c7, type: 3}
   _setTable: {fileID: 8300000, guid: cb8d1f9f8bcfd7744bc5c09e074bdeb6, type: 3}
   _useHealthPotion: {fileID: 8300000, guid: 13b481262ca11bc4cbfa819b6dfe28cc, type: 3}
 --- !u!95 &1199805082
@@ -4684,6 +4684,9 @@ GameObject:
   - component: {fileID: 1304457975}
   - component: {fileID: 1304457978}
   - component: {fileID: 1304457974}
+  - component: {fileID: 1304457981}
+  - component: {fileID: 1304457980}
+  - component: {fileID: 1304457982}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4734,17 +4737,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelGenerator: {fileID: 2040649297}
-  _spawnPoint: {fileID: 547295329}
   _character: {fileID: 1199805081}
-  _singTable: {fileID: 1321292057356962654, guid: 23ca786d98db8e94795a34dcfc012886, type: 3}
-  _rotateSpeed: 15
-  _walkSpeed: 6
-  _attackDuration: 1
-  _attackCooldown: 1.2
-  _attackDistance: 4
   _restoredHealth: 25
-  _damage: 10
-  _countSingTable: 5
+  _playerAttack: {fileID: 1304457981}
+  _playerMovement: {fileID: 1304457980}
+  _inventory: {fileID: 1304457982}
 --- !u!114 &1304457977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4757,7 +4754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543f91ede5893cd49a39eb44afa5cadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: 20
   _player: {fileID: 1304457976}
 --- !u!65 &1304457978
 BoxCollider:
@@ -4789,6 +4785,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1304457980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304457973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2e46bdef5cb5446b5f77cbf171f6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateSpeed: 15
+  _walkSpeed: 7
+--- !u!114 &1304457981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304457973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f050cbcb169cba34fbaf4cd426256139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackDuration: 1
+  _attackCooldown: 0.5
+  _attackDistance: 5
+  _damage: 10
+--- !u!114 &1304457982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304457973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0305ff1f73f394b9642d572fa43a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxCountHealthPotions: 10
+  _maxCoutnSingTables: 10
 --- !u!1 &1363792789
 GameObject:
   m_ObjectHideFlags: 0
@@ -6283,6 +6323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 1979133868}
   _player: {fileID: 1304457976}
+  _playerInventory: {fileID: 1304457982}
   _speed: 8
   _countHealthPotions: {fileID: 1833063427}
   _countSingTables: {fileID: 2045706525}
