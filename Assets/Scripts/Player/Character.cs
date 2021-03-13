@@ -8,15 +8,11 @@ public class Character : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioClip _attack;
-    [SerializeField] private AudioClip _move;
-    [SerializeField] private AudioClip _miss;
     [SerializeField] private AudioClip _setTable;
     [SerializeField] private AudioClip _useHealthPotion;
 
-
     private void PlayAudio(AudioClip clip)
     {
-        //_audioSource.pitch = 1;
         _audioSource.clip = clip;
         _audioSource.Play();
     }
@@ -40,17 +36,15 @@ public class Character : MonoBehaviour
         _audioSource.Play();
     }
 
-
     public void Move()
     {
        _animator.Play("Walk");
-       // PlayAudio(_move);
     }
 
     public void Attack()
     {
         _animator.Play("Attack");
-        PlayAudioWithDelay(_miss,0.7f);
+        PlayAudioWithDelay(_attack,0.7f);
     }
 
     public void Idle()

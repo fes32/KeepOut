@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PausePanel : MonoBehaviour
 {
     [SerializeField] private GameObject _pausePanel;
-    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private PlayerInput _playerController;
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Toggle _music;

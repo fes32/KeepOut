@@ -24,9 +24,9 @@ public class MenuPlayer : MonoBehaviour
     private void OnPlayButtonClick()
     {
         _playButton.onClick.RemoveListener(OnPlayButtonClick);
+        _camera.StartAnimation();
         _mouseTracker.SetActive(false);
         _head.transform.rotation = new Quaternion(0, 0, 0,0);
         _animator.Play("CutScene");
-        _camera.StartAnimation();
     }
 }

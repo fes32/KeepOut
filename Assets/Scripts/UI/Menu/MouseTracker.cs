@@ -9,13 +9,13 @@ public class MouseTracker : MonoBehaviour
     [SerializeField] private float _minZRotateAngle;
     [SerializeField] private GameObject _head;
 
-    private PlayerInput _menu;
+    private PlayerInputAction _menu;
     private Vector2 _rotate ;
     private Vector3 _rotation;
 
     private void Start()
     {
-        _menu = new PlayerInput();
+        _menu = new PlayerInputAction();
         _menu.Enable();
     }
 
@@ -34,8 +34,4 @@ public class MouseTracker : MonoBehaviour
 
         _head.transform.localEulerAngles =_rotation;
     }
-
-
-
-
 }

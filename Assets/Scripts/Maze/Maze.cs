@@ -175,37 +175,23 @@ public class Maze : MonoBehaviour
         _exitCell = _cells[_exitPosition.x, _exitPosition.y];
     }
 
-    public void SpawnEnemy(Enemy enemy,int count)
+    public void SpawnEnemy(Enemy enemy, int count)
     {
-        int maxTryCount = 5;
-        int elapsedTry = 0;
         for (int i = 0; i < count; i++)
         {
-            if (elapsedTry < maxTryCount)
+            int randomCellXPosition = Random.Range(0, _cells.GetLength(0) - 1);
+            int randomCellYPosition = Random.Range(0, _cells.GetLength(1) - 1);
+
+            if (randomCellXPosition == 0 & randomCellYPosition == 0)
             {
-                int randomCellXPosition = Random.Range(0, _cells.GetLength(0) - 1);
-                int randomCellYPosition = Random.Range(0, _cells.GetLength(1) - 1);
-
-                if (randomCellXPosition == 0 & randomCellYPosition == 0)
-                {
-                    i--;
-                    break;
-                }
-                Cell currentCell = _cells[randomCellXPosition, randomCellYPosition];
-
-                if (currentCell.EnemySpawned == false)
-                {
-                    currentCell.SpawnEnemy(enemy,_player);
-                }
-                else
-                {
-                    i--;
-                    elapsedTry++;
-                }
+                i--;
+                break;
             }
-            else
+            Cell currentCell = _cells[randomCellXPosition, randomCellYPosition];
+
+            if (currentCell.EnemySpawned == false)
             {
-                elapsedTry = 0;
+                currentCell.SpawnEnemy(enemy, _player);
             }
         }
     }
@@ -218,8 +204,7 @@ public class Maze : MonoBehaviour
             int randomCellYPosition = Random.Range(0, _cells.GetLength(1) - 1);
 
             if (randomCellXPosition == 0 & randomCellYPosition == 0)
-                break;
-            
+                break;            
 
             Cell currentCell = _cells[randomCellXPosition, randomCellYPosition];
 

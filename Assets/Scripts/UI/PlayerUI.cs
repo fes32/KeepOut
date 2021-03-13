@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Slider _healthBar;
     [SerializeField] private Player _player;
+    [SerializeField] private Inventory _playerInventory;
     [SerializeField] private float _speed;
     [SerializeField] TMP_Text _countHealthPotions;
     [SerializeField] TMP_Text _countSingTables;
@@ -17,14 +18,14 @@ public class PlayerUI : MonoBehaviour
     private void OnEnable()
     {
         _player.HealthChanged += ChangedHealthHandler;
-        _player.SingTablesCountChanged += ChangedSingTablesCount;
-        _player.HealthPotionCountChanged += ChangedHealthPotionsCount;
+        _playerInventory.SingTablesCountChanged += ChangedSingTablesCount;
+        _playerInventory.HealthPotionCountChanged += ChangedHealthPotionsCount;
     }
     private void OnDisable()
     {
         _player.HealthChanged -= ChangedHealthHandler;
-        _player.SingTablesCountChanged -= ChangedSingTablesCount;
-        _player.HealthPotionCountChanged -= ChangedHealthPotionsCount;
+        _playerInventory.SingTablesCountChanged -= ChangedSingTablesCount;
+        _playerInventory.HealthPotionCountChanged -= ChangedHealthPotionsCount;
     }
 
     private void ChangedHealthHandler(int currentHealth)
