@@ -7,15 +7,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private float _walkSpeed;
 
-    private Vector3 _rotation;
     public float MinimalValueForMove { get; private set; } = 0.01f;
 
     public void Look(Vector2 rotate)
     {
+        Vector3 rotation = transform.rotation.eulerAngles;
+
         float scaleRotateSpeed = _rotateSpeed * Time.deltaTime;
-        _rotation.y += rotate.x * scaleRotateSpeed;
-        _rotation.x = 0;
-        transform.localEulerAngles = _rotation;
+        rotation.y += rotate.x * scaleRotateSpeed;
+        rotation.x = 0;
+        transform.localEulerAngles = rotation;
     }
 
     public void Move(Vector2 direction)

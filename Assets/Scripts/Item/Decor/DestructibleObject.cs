@@ -13,7 +13,10 @@ public class DestructibleObject : MonoBehaviour
     private Decor _decor;
     private AudioSource _audioSource;
     private float _durationAudioClip;
+    private float _minPitch = 0.5f;
+    private float _maxPitch = 0.5f;
     private bool _isActive = true;
+    
 
     private void OnEnable()
     {
@@ -32,7 +35,7 @@ public class DestructibleObject : MonoBehaviour
 
     private IEnumerator DestroyAfterPlaingAudio()
     {
-        _audioSource.pitch= Random.Range(0.5f, 1.5f);
+        _audioSource.pitch= Random.Range(_minPitch, _maxPitch);
         _audioSource.Play();
 
         float elapsedTime = 0;

@@ -20,9 +20,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private Transform _bottomWallChestsSpawnPoints;
     [SerializeField] private Transform _enemySpawnPoint;
    
-
     public Door ExitDoor { get; private set; }
-
     public bool LeftWallActive { get; private set; } = true;
     public bool BottomWallActive { get; private set; } = true;
     public bool FloorActive { get; private set; } = true;
@@ -55,7 +53,6 @@ public class Cell : MonoBehaviour
     {
         var decorItem = Instantiate(decorTemplate, parent);
         decorTemplate.SetParentCell(transform);
-
     }
 
     private Vector3 GetTurnEnemy()

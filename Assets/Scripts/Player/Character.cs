@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     [SerializeField] private AudioClip _setTable;
     [SerializeField] private AudioClip _useHealthPotion;
 
+    private float _attackAudioDelay=0.7f;
+
     private void PlayAudio(AudioClip clip)
     {
         _audioSource.clip = clip;
@@ -44,7 +46,7 @@ public class Character : MonoBehaviour
     public void Attack()
     {
         _animator.Play("Attack");
-        PlayAudioWithDelay(_attack,0.7f);
+        PlayAudioWithDelay(_attack, _attackAudioDelay);
     }
 
     public void Idle()
