@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _attackDistance;
     [SerializeField] private int _damage;
 
-    private float _elapsedTimeAfterAttack = 0;
+    private Vector3 _attackHeight=new Vector3(0,1,0);
 
     public bool CanAttack { get; private set; } = true;
 
@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
             yield return null;
         }
 
-        if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), transform.forward * _attackDistance, out RaycastHit hit, _attackDistance))
+        if (Physics.Raycast(transform.position +_attackHeight, transform.forward * _attackDistance, out RaycastHit hit, _attackDistance))
         {
             if (hit.collider.TryGetComponent(out DestructibleObject destructibleObject))
             {

@@ -11,6 +11,8 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Player _player;
 
+    private int _gameSceneIndex;
+
     private void OnEnable()
     {
         _exitButton.onClick.AddListener(OnExitButtonClick);
@@ -38,6 +40,6 @@ public class GameOverScreen : MonoBehaviour
     private void OnResumeButtonClick()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(_gameSceneIndex);
     }
 }

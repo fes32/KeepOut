@@ -16,6 +16,7 @@ public class Bomb : DropItem
     private ParticleSystem _fire;
     private ParticleSystem _explosion;
     private AudioSource _audioSource;
+    private float _durationExplosionAnimation = 1;
 
     private void OnEnable()
     {
@@ -28,7 +29,6 @@ public class Bomb : DropItem
         _animator.Play("Fire");
 
         _fire = Instantiate(_fireEffect,this.transform);
-        _fire.transform.position = transform.position + new Vector3(0, 0.2f, 0);
 
         float elapsedTime = 0;
 
@@ -45,7 +45,7 @@ public class Bomb : DropItem
     { 
         float elapsedTime = 0;
 
-        while (elapsedTime < 1f)
+        while (elapsedTime < _durationExplosionAnimation)
         {
             elapsedTime += Time.deltaTime;
             yield return null;
